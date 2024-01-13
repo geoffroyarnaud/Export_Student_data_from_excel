@@ -42,7 +42,7 @@ const App = () => {
   };
 
   return (
-    <main className="max-w-[550px] min-h-screen mx-auto pt-5 pb-32 shadow-lg p-2">
+    <main className="max-w-[600px] min-h-screen mx-auto pt-5 pb-32 shadow-lg px-3">
       <div className="space-y-6 mb-8">
         <h2 className="text-xl font-semibold inline-block">Inscription étudiant</h2>
         <FormEtudiants etudiants={etudiants} setEtudiants={setEtudiants} />
@@ -50,7 +50,7 @@ const App = () => {
 
       <div className="mb-6 flex w-full">
         <h3 className="mt-1 text-xl font-semibold inline-block mr-10">Liste  étudiants</h3>
-        <label htmlFor="search" className="mt-2 inline-block text-[15px] font-semibold">Rechercher:</label>
+        <label htmlFor="search" className="mt-2 mr-2 inline-block text-[15px] font-semibold">Rechercher : </label>
         <input
           type="text"
           id="search"
@@ -59,7 +59,7 @@ const App = () => {
           className="border p-2 flex-grow border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
         />
       </div>
-      <div className='flex gap-x-3'>
+      <div className='flex '>
         <ExportStudentExcel etudiant={etudiants} />
         <ImportStudentExcel onImport={handleImport} />
       </div>
@@ -73,7 +73,7 @@ const App = () => {
           ))}
         </ul>
       ) : (
-        <p>None Students founded.</p>
+        <p>Aucun étudiant trouvé.</p>
       )}
     </main>
   );
