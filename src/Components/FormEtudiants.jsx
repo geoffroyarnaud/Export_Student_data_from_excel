@@ -5,20 +5,23 @@ const FormEtudiants = ({ setEtudiants }) => {
     //state
     const [ajouterNom, setAjouterNom] = useState("");
     const [ajouterPrenom, setAjouterPrenom] = useState("");
-    const [ajouterAge, setAjouterAge] = useState(0);
+    const [filiere, setFiliere] = useState("");
+    const [dateNaissance, setDateNaissance] = useState("");
 
     //comportements
     const handleSubmit = (event) => {
         event.preventDefault();
-      
+
         const nom = ajouterNom.toLocaleUpperCase();
         const prenom = ajouterPrenom.toLocaleUpperCase();
-        const age = ajouterAge;
-     
+        const filiereE = filiere.toLocaleUpperCase();
+        const date = dateNaissance;
+
         const studentsList = {
             nom,
             prenom,
-            age,
+            filiereE,
+            date
         }
         save(studentsList)
         setEtudiants(
@@ -26,9 +29,10 @@ const FormEtudiants = ({ setEtudiants }) => {
                 return [...current, studentsList]
             }
         )
-        setAjouterAge(0);
         setAjouterNom("");
         setAjouterPrenom("");
+        setFiliere("");
+        setDateNaissance("");
     }
 
     const handleNom = (event) => {
@@ -37,8 +41,11 @@ const FormEtudiants = ({ setEtudiants }) => {
     const handlePrenom = (event) => {
         setAjouterPrenom(event.target.value);
     }
-    const handleAge = (event) => {
-        setAjouterAge(event.target.value);
+    const handleDateNaissance = (event) => {
+        setDateNaissance(event.target.value);
+    }
+    const handleFiliere = (event) => {
+        setFiliere(event.target.value);
     }
 
     //render
@@ -64,15 +71,24 @@ const FormEtudiants = ({ setEtudiants }) => {
                     className=" py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                 />
             </div>
+            <div className='flex gap-3'>
+                <input
+                    value={dateNaissance}
+                    onChange={handleDateNaissance}
+                    type="date"
+                    placeholder='Date de naissance... Ex.13/01/2024'
+                    className="py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                />
+                <input
+                    value={filiere}
+                    onChange={handleFiliere}
+                    type="text"
+                    placeholder='Filiere...'
+                    className="py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
 
-            <input
-                value={ajouterAge}
-                onChange={handleAge}
-                type="number"
-                placeholder='Age Etudiant...'
-                className="py-3 px-4 block w-full border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                />
+            </div>
 
-            />
             <button type="submit" className="self-start py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Ajouter Etudiant</button>
         </form>
     );

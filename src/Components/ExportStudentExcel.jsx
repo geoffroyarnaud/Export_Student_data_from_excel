@@ -10,14 +10,16 @@ const ExportStudentExcel = ({ etudiant }) => {
         worksheet.columns = [
             { header: 'Nom', key: 'nom', width: 15 },
             { header: 'Prenom', key: 'prenom', width: 15 },
-            { header: 'Age', key: 'age', width: 10 },
+            { header: 'DateNaissance', key: 'dateNaissance', width: 15 },
+            { header: 'Filiere', key: 'filiere', width: 15 },
         ];
 
         etudiant.forEach(etudiant => {
             worksheet.addRow({
                 nom: etudiant.nom,
                 prenom: etudiant.prenom,
-                age: etudiant.age,
+                dateNaissance: etudiant.date,
+                filiere: etudiant.filiereE,
             });
         });
 
