@@ -4,6 +4,7 @@ import { getStudents, removeStudents } from "./lib/utils";
 import StudentsLists from './Components/StudentsLists';
 import ExportStudentExcel from './Components/ExportStudentExcel';
 import ImportStudentExcel from './Components/ImportStudentExcel';
+import ExportHeadersExcel from './Components/ExportHeadersExcel';
 
 const App = () => {
   const [etudiants, setEtudiants] = useState(() => getStudents());
@@ -59,8 +60,9 @@ const App = () => {
           className="border p-2 flex-grow border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
         />
       </div>
-      <div className='flex '>
+      <div className='flex gap-4'>
         <ExportStudentExcel etudiant={etudiants} />
+        <ExportHeadersExcel />
         <ImportStudentExcel onImport={handleImport} />
       </div>
 

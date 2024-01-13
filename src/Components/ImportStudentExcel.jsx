@@ -63,7 +63,7 @@ const ImportStudentExcel = ({ onImport }) => {
     };
 
     return (
-        <div className='ml-12 w-full'>
+        <div className='w-80'>
             <input
                 type="file"
                 accept=".xlsx, .xls"

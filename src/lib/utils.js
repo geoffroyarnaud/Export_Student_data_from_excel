@@ -16,6 +16,13 @@ export const removeStudents = (nom) => {
     return newStudent;
 }
 
+export const getHeaders = () => {
+    const students = JSON.parse(localStorage.getItem('students')) ?? [];
+    // Assuming the structure of the student object
+    const headers = Object.keys(students[0] || {});
+    return headers;
+  };
+
 // export const updateStudentsList = (term) => {
 //     const filteredStudents = getStudents().filter(etudiant =>
 //         etudiant.nom.toLowerCase().includes(term.toLowerCase())
