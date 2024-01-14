@@ -9,6 +9,12 @@ const FormEtudiants = ({ setEtudiants }) => {
     const [dateNaissance, setDateNaissance] = useState("");
 
     //comportements
+    const formatDateForDisplay = (inputDate) => {
+        // Convertir la date de 'année-mois-jour' à 'jour-mois-année'
+        const [year, month, day] = inputDate.split('-');
+        return `${day}-${month}-${year}`;
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -21,7 +27,7 @@ const FormEtudiants = ({ setEtudiants }) => {
             nom,
             prenom,
             filiereE,
-            date
+            date: formatDateForDisplay(date)
         }
         save(studentsList)
         setEtudiants(

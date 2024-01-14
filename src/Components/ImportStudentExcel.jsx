@@ -4,6 +4,12 @@ import { getStudents, save } from '../lib/utils';
 
 const ImportStudentExcel = ({ onImport }) => {
 
+    const formatDateForImport = (inputDate) => {
+        // Convertir la date de 'année-mois-jourT00:00:00.000Z' à 'jour-mois-année'
+        const formattedDate = new Date(inputDate).toLocaleDateString('fr-FR');
+        return formattedDate;
+    };
+
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
 
@@ -30,20 +36,27 @@ const ImportStudentExcel = ({ onImport }) => {
 
                 const nom = row.getCell(1).value;
                 const prenom = row.getCell(2).value;
-                const age = row.getCell(3).value;
+                const filiereE = row.getCell(3).value;
+                const date = row.getCell(4).value;
 
-                if (nom && prenom && age) {
+                if (nom && prenom && filiereE && date) {
                     const isExisting = existingStudents.some((student) => {
                         return (
                             student.nom.toLowerCase() === nom.toLowerCase() &&
                             student.prenom.toLowerCase() === prenom.toLowerCase() &&
-                            student.age === age
+                            student.filiereE === filiereE.toLocaleUpperCase() &&
+                            student.date === date
                         );
                     });
 
                     // Add only if it's not already in the list
                     if (!isExisting) {
-                        students.push({ nom, prenom, age });
+                        students.push({
+                            nom,
+                            prenom,
+                            filiereE,
+                            date: formatDateForImport(date)
+                        });
                     }
                 }
             });
