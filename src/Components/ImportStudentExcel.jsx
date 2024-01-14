@@ -36,16 +36,16 @@ const ImportStudentExcel = ({ onImport }) => {
 
                 const nom = row.getCell(1).value;
                 const prenom = row.getCell(2).value;
-                const filiereE = row.getCell(3).value;
-                const date = row.getCell(4).value;
+                const date = row.getCell(3).value;
+                const filiereE = row.getCell(4).value;
 
                 if (nom && prenom && filiereE && date) {
                     const isExisting = existingStudents.some((student) => {
                         return (
                             student.nom.toLowerCase() === nom.toLowerCase() &&
                             student.prenom.toLowerCase() === prenom.toLowerCase() &&
-                            student.filiereE === filiereE.toLocaleUpperCase() &&
-                            student.date === date
+                            student.date === date &&
+                            student.filiereE === filiereE.toLocaleUpperCase()
                         );
                     });
 

@@ -12,7 +12,7 @@ const FormEtudiants = ({ setEtudiants }) => {
     const formatDateForDisplay = (inputDate) => {
         // Convertir la date de 'année-mois-jour' à 'jour-mois-année'
         const [year, month, day] = inputDate.split('-');
-        return `${day}-${month}-${year}`;
+        return `${day}/${month}/${year}`;
     };
 
     const handleSubmit = (event) => {

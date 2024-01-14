@@ -9,8 +9,8 @@ const ExportHeadersExcel = () => {
         worksheet.columns = [
             { header: 'Nom', key: 'nom', width: 15 },
             { header: 'Prenom', key: 'prenom', width: 15 },
-            { header: 'Filiere', key: 'filiere', width: 15 },
             { header: 'DateNaissance', key: 'dateNaissance', width: 15 },
+            { header: 'Filiere', key: 'filiere', width: 15 },
         ];
 
         workbook.xlsx.writeBuffer().then(buffer => {
