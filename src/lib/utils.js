@@ -21,17 +21,5 @@ export const getHeaders = () => {
     // Assuming the structure of the student object
     const headers = Object.keys(students[0] || {});
     return headers;
-  };
+};
 
-// export const updateStudentsList = (term) => {
-//     const filteredStudents = getStudents().filter(etudiant =>
-//         etudiant.nom.toLowerCase().includes(term.toLowerCase())
-//     );
-
-//     const noResultsFound = term.trim() !== '' && filteredStudents.length === 0;
-//     setEtudiants(noResultsFound ? [] : filteredStudents);
-
-//     if (noResultsFound) {
-//         console.log("Aucun résultat trouvé pour la recherche :", term);
-//     }
-// };

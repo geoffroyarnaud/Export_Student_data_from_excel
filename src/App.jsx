@@ -67,16 +67,14 @@ const App = () => {
       </div>
 
       {etudiants && etudiants.length > 0 ? (
-        <ul>
-          {etudiants.map((etudiant, i) => (
-            <li className="pt-2" key={i}>
-              <StudentsLists etudiant={etudiant} onDelete={handleDelete} />
-            </li>
-          ))}
-        </ul>
+
+        <StudentsLists etudiant={etudiants} onDelete={handleDelete} />
+
       ) : (
         <p>Aucun étudiant trouvé.</p>
-      )}
+      )
+      }
+
     </main>
   );
 };
